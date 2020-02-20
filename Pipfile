@@ -11,6 +11,5 @@ mpegdash = "*"
 m3u8 = "*"
 terminal_utils = {file = "https://github.com/vphpersson/terminal_utils/tarball/master"}
 
-
 [requires]
 python_version = "3.8"

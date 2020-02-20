@@ -21,7 +21,7 @@ class Stream(ABC):
         self,
         session: ClientSession,
         num_concurrent: int = 10,
-        per_downloaded_segment_callback: Optional[Callable[[int, int, str], Any]] = None
+        per_downloaded_segment_callback: Optional[Callable[[int, int, str, int], Any]] = None
     ) -> bytes:
         """
         Download the media of the stream into memory.
@@ -50,7 +50,7 @@ class Stream(ABC):
                 async with session.get(url) as response:
                     download_arr[i] = await response.read()
                     if per_downloaded_segment_callback:
-                        per_downloaded_segment_callback(i, num_download_items, url)
+                        per_downloaded_segment_callback(i, num_download_items, url, len(download_arr[i]))
 
         await asyncio_gather(*[download_url() for _ in range(min(num_download_items, num_concurrent))])
 
