@@ -8,9 +8,9 @@ from itertools import chain
 
 from mpegdash.nodes import AdaptationSet, Representation, SegmentTemplate
 from aiohttp import ClientSession
+from pyutils.my_string import expand_var
 
 from svtplay_downloader.streams import Stream, AudioStream, VideoStream, SubtitleStream
-from svtplay_downloader.internal_utils import expand_var
 
 
 @dataclass
